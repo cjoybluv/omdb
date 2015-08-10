@@ -1,0 +1,30 @@
+.navbar-brand h1 {
+  margin-top: -12px;
+}
+.input-right-span {
+    float: right;
+    margin-right: 6px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
+.movie-list h4 {
+  display: inline;
+}
+
+.star {
+  background-image: url(/images/titlePageSprite-1214724556._V_.png);
+  background-position: -180px -71px;
+  width: 66px;
+  height: 66px;
+  line-height: 66px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  font-family: tahoma;
+  float: left;
+  padding-right: 10px;
+}

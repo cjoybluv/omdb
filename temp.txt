@@ -1,0 +1,2 @@
+    <li><a href="<%= prevPage %>">Last Search</a></li>
+    <li class="active"><%= movie.Title %></li>

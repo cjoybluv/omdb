@@ -1,0 +1,66 @@
+
+<ul class="breadcrumb">
+  <% breadcrumbs.forEach(function(breadcrumb,idx) { %>
+    <li><a href="<%= breadcrumb.url %>"><%= breadcrumb.name %></a></li>
+  <% }); %>
+</ul>
+
+
+<div class="col-md-4">
+  <img src="<%= movie.Poster %>" class="img-responsive">
+</div>
+<div class="col-md-8">
+  <div class="row">
+    <h3><%= movie.Title %></h3>
+  </div>
+  <div class="row">
+
+    <div class="star col-md-2"><%= movie.imdbRating %></div>
+    <div class="col-md-10">
+      <% if(movie.Type==='movie') { %>
+        <p><strong>Year: </strong><a href="http://www.imdb.com/year/<%= movie.Year %>/?ref_=tt_ov_inf" target="_blank"><%= movie.Year %></a></p>
+      <% } else { %>
+        <p><strong>Years: </strong><%= movie.Year %></p>
+      <% } %>
+      <p><strong>Rated: </strong><%= movie.Rated %></p>
+      <p><strong>Runtime: </strong><%= movie.Runtime %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-12">
+      <% var genres = movie.Genre.split(",").map(function(genre) {
+            return genre.trim();
+          }); %>
+      <p>
+      <% for (var g=0;g<genres.length;g++) { %>
+          <a href="http://www.imdb.com/genre/<%= genres[g] %>/?ref_=tt_ov_inf" target="_blank"><%= genres[g] %></a>
+          <% if(g<genres.length-1) { %>
+            &nbsp;|&nbsp;
+          <% } %>
+      <% } %>
+      </p>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-offset-1 col-md-9">
+      <p><strong>Director: </strong><%= movie.Director %></p>
+      <p><strong>Writer: </strong><%= movie.Writer %></p>
+      <p><strong>Stars: </strong><%= movie.Actors %></p>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-offset-1 col-md-11">
+      <p><%= movie.Plot %></p>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+

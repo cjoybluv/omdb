@@ -1,0 +1,17 @@
+
+
+
+<h2 class="text-center">Movie Search Results for: <small><%= q %></small></h2>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-7">
+    <% movies.forEach(function(movie) { %>
+    <div class="well movie-list">
+      <h4><a href="/movies/<%= movie.imdbID %>"><%= movie.Title %></a></h4>
+      <span class="pull-right"><%= movie.Year %> - <%= movie.Type %></span>
+    </div>
+    <% }); %>
+  </div>
+</div>
+
+
