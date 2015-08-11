@@ -1,4 +1,4 @@
-
+<a href="<%= prevPage %>" class="btn btn-primary">&larr; Back to Search</a>
 <div class="col-md-4">
   <img src="<%= movie.Poster %>" class="img-responsive">
 </div>
@@ -9,8 +9,11 @@
      <input type="hidden" name="title" value="<%= movie.Title %>">
      <input type="hidden" name="year" value="<%= movie.Year %>">
      <input type="hidden" name="poster" value="<%= movie.Poster %>">
-
-      <button type="submit" class="btn btn-success pull-right">Favorite!</button>
+     <% if(isFavorite) { %>
+      <button class="btn btn-danger pull-right">A Favorite!</button>
+     <% } else { %>
+      <button type="submit" class="btn btn-success pull-right">Favorite This!</button>
+     <% } %>
     </form>
     <h3><%= movie.Title %></h3>
   </div>

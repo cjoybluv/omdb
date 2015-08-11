@@ -55,18 +55,22 @@ router.get("/:imdbID", function(req, res) {
     // http://www.omdbapi.com/?i=tt0133093
     var url = 'http://www.omdbapi.com/?plot=full&tomatoes=true&r=json&i='+imdbID;
     request(url, function(error, response, data) {
-      var parsedData = JSON.parse(data);
-      // res.send(parsedData);
-
-      if (parsedData) {
-        res.render('movies/show', {
-            movie: parsedData,
-            prevPage: req.headers['referer']
-         });
-      } else {
-        console.log('no results!');
-        res.redirect('/movies/index');
-      }
+      db.favorite.find({where:{imdbid:imdbID}})
+      .then(function(favorite) {
+        var parsedData = JSON.parse(data);
+        // res.send(parsedData);
+        var isFavorite = (favorite);
+        if (parsedData) {
+          res.render('movies/show', {
+              movie: parsedData,
+              isFavorite: isFavorite,
+              prevPage: req.headers['referer']
+           });
+        } else {
+          console.log('no results!');
+          res.redirect('/movies/index');
+        }
+      });
     });
 });
 
