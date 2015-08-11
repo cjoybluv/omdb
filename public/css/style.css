@@ -1,5 +1,27 @@
+body {
+  background-image: url(/images/IMG_0063.jpg);
+  color: white;
+}
 .navbar-brand h1 {
   margin-top: -12px;
+  color: black;
+}
+a {
+  color: #FA00BC;
+}
+a:hover {
+  color:  #FB0006;
+}
+td,tr {
+  border-top: none !important;
+}
+.centered {
+  vertical-align:middle;
+  text-align:center;
+}
+.centered img {
+  display:block;
+  margin:0 auto;
 }
 .input-right-span {
     float: right;
@@ -27,4 +49,16 @@
   font-family: tahoma;
   float: left;
   padding-right: 10px;
+}
+.favorite {
+  height: 300px;
+  width: 300px;
+  vertical-align: bottom;
+  text-align: center;
+}
+.thumb {
+  height: 300px;
+  display: inline;
+  padding: 20px;
+
 }

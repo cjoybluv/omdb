@@ -1,36 +1,38 @@
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
+
+var app = express();
+
+app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({extended: true}));
+
+
 var ejsLayouts = require('express-ejs-layouts');
 var request = require('request');
 
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public'));
 
 require('express-helpers')(app);
 
-// breadcrumbs
-var breadcrumbs = require('express-breadcrumbs');
-app.use(breadcrumbs.init());
+// // breadcrumbs
+// var breadcrumbs = require('express-breadcrumbs');
+// app.use(breadcrumbs.init());
 
-// Set Breadcrumbs home information
-app.use(breadcrumbs.setHome());
+// // Set Breadcrumbs home information
+// app.use(breadcrumbs.setHome());
 
-// Mount the breadcrumbs at home
-app.use('/', breadcrumbs.setHome({
-  name: 'Home',
-  url: '/'
-}));
+// // Mount the breadcrumbs at home
+// app.use('/', breadcrumbs.setHome({
+//   name: 'Home',
+//   url: '/'
+// }));
 
 // home page
 app.get("/", function(req, res) {
-  res.render('main/index', {
-    breadcrumbs: req.breadcrumbs()
-  });
+  res.render('main/index');
 });
-
 
 // my movie constructor
 function Movie(imdbID, Title, Year, Type) {
@@ -64,7 +66,6 @@ app.get("/movies", function(req, res) {
 // /movies?q=star+wars
          req.breadcrumbs({name: 'Search List',url: 'movies?q='+q});
          res.render('movies/index', {
-            breadcrumbs: req.breadcrumbs(),
             movies: parsedData.Search,
             q: q
          });
@@ -90,9 +91,7 @@ app.get("/movies/:imdbID", function(req, res) {
       // res.send(parsedData);
 
       if (parsedData) {
-        req.breadcrumbs({name: 'Show Movie',url: '/movies/'+req.params.imdbID});
         res.render('movies/show', {
-            breadcrumbs: req.breadcrumbs(),
             movie: parsedData,
             prevPage: req.headers['referer']
          });
@@ -103,8 +102,7 @@ app.get("/movies/:imdbID", function(req, res) {
     });
 });
 
-
-
+app.use('/favorites',require('./controllers/favorites.js'));
 
 app.listen(3090);
 

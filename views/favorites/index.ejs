@@ -1,0 +1,22 @@
+<h3>Favorites List</h3>
+
+
+<table class="table">
+  <tbody>
+    <tr>
+      <% for (var i = 0;i<favorites.length;i++) { %>
+        <% if (i<favorites.length && (i%3)===0) { %>
+          <tr></tr>
+        <% } %>
+        <% var favorite = favorites[i]; %>
+        <td class="centered">
+          <a href="/movies/<%= favorite.imdbid %>"><img src="<%= favorite.poster %>" class="thumb img-responsive"></a>
+          <figcaption><%= favorite.title %> &mdash; <%= favorite.year %></figcaption>
+        </td>
+      <% } %>
+    </tr>
+  </tbody>
+</table>
+
+
+

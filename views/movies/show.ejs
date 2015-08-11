@@ -1,16 +1,17 @@
 
-<ul class="breadcrumb">
-  <% breadcrumbs.forEach(function(breadcrumb,idx) { %>
-    <li><a href="<%= breadcrumb.url %>"><%= breadcrumb.name %></a></li>
-  <% }); %>
-</ul>
-
-
 <div class="col-md-4">
   <img src="<%= movie.Poster %>" class="img-responsive">
 </div>
 <div class="col-md-8">
   <div class="row">
+    <form action="/favorites" method="POST" role="form">
+     <input type="hidden" name="imdbId" value="<%= movie.imdbID %>">
+     <input type="hidden" name="title" value="<%= movie.Title %>">
+     <input type="hidden" name="year" value="<%= movie.Year %>">
+     <input type="hidden" name="poster" value="<%= movie.Poster %>">
+
+      <button type="submit" class="btn btn-success pull-right">Favorite!</button>
+    </form>
     <h3><%= movie.Title %></h3>
   </div>
   <div class="row">
@@ -61,6 +62,5 @@
 
 
 </div>
-
 
 
