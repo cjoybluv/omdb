@@ -38,7 +38,7 @@ td,tr {
   background-image: url(/images/titlePageSprite-1214724556._V_.png);
   background-position: -180px -71px;
   width: 66px;
-  height: 66px;
+  height: 65px;
   line-height: 66px;
   display: inline-block;
   text-align: center;
@@ -49,6 +49,11 @@ td,tr {
   font-family: tahoma;
   float: left;
   padding-right: 10px;
+}
+.favBtn {
+  position: relative;
+  top: -300px;
+  left: 200px;
 }
 .favorite {
   height: 300px;

@@ -11,6 +11,7 @@
         <% var favorite = favorites[i]; %>
         <td class="centered">
           <a href="/movies/<%= favorite.imdbid %>"><img src="<%= favorite.poster %>" class="thumb img-responsive"></a>
+          <a href="/favorites/<%= favorite.id %>/comments" class="star favBtn"></a>
           <figcaption><%= favorite.title %> &mdash; <%= favorite.year %></figcaption>
         </td>
       <% } %>

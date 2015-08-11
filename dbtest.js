@@ -27,21 +27,35 @@ var db = require('./models');
 
 
 // //find 1 author - make a post
-// db.author.find(
-//   {where:{name:'Sara'} })
-// .then(function(author){
-//   author.createPost({
-//     title:'Third Post',
-//     content:'Third post content'
-//   }).then(function(post){
-//     console.log(post.get());
+// db.favorite.find(
+//   {where:{imdbid:'tt0903624'} })
+// .then(function(favorite){
+//   favorite.createComment({
+//     comment:'1st comment on hobbit 1'
+//   }).then(function(comment){
+//     console.log(comment.get());
 //   });
-//   console.log(author.get());
+//   console.log(favorite.get());
 // });
 
 
+//find 1 fav - get comments
+db.favorite.find(
+  {where:{imdbid:'tt0903624'} })
+.then(function(favorite){
+  favorite.getComments().then(function(comments){
+       console.log('comment count',comments.length);
+       comments.forEach(function(comment){
+      console.log('------');
+      console.log(comment.get());
 
-// //find 1 author - get posts
+  });
+  console.log(favorite);
+  });
+});
+
+
+// //find 1 author - get comments
 // db.author.find(
 //   {where:{name:'Dave'} })
 // .then(function(author){

@@ -1,2 +1,17 @@
+<div class="well">
+  <table class="table">
+    <tbody>
+      <% favorite.comments.forEach(function(comment) { %>
+        <tr><td><%= comment.comment %></td></tr>
+      <% }) %>
+
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
     <li><a href="<%= prevPage %>">Last Search</a></li>
     <li class="active"><%= movie.Title %></li>

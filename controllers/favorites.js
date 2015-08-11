@@ -33,6 +33,69 @@ router.get('/', function(req, res){
   });
 });
 
+router.get('/:id/comments', function(req,res) {
+  db.favorite.findById(parseInt(req.params.id)).then(function(favorite){
+    favorite.getComments().then(function(comments){
+      console.log('comments',comments);
+      res.render('favorites/comment', {
+        favorite: favorite,
+        comments: comments
+      });
+    });
+  });
+});
+
+router.post('/:id/comments', function(req,res) {
+  db.favorite.findById(req.body.favorite).then(function(favorite){
+    favorite.createComment({
+      comment: req.body.comment
+    }).then(function(comment){
+      res.redirect('/favorites');
+    });
+  });
+});
+
+
+// // POSTS /posts - create new post
+// router.post('/',function(req, res){
+//   db.author.findById(req.body.author).then(function(author){
+//     author.createPost({
+//       title:req.body.title,
+//       content:req.body.content
+//     }).then(function(post){
+//       res.redirect('/posts');
+//     });
+//   });
+//   // res.send(req.body);
+// });
+
+
+
+// db.favorite.find(
+//   {where:{imdbid:'tt0903624'} })
+// .then(function(favorite){
+//   favorite.getComments().then(function(comments){
+//        console.log('comment count',comments.length);
+//        comments.forEach(function(comment){
+//       console.log('------');
+//       console.log(comment.get());
+
+//   });
+//   console.log(favorite);
+//   });
+// });
+
+
+  // db.author.findAll().then(function(authors){
+  // db.post.findAll({include:[db.author]}).then(function(posts){
+  //     res.render('posts/index',{
+  //       myPosts:posts,
+  //       authorList:authors
+  //     });
+  //   });
+  // });
+
+
 // // POSTS /posts - create new post
 // router.post('/',function(req, res){
 //   db.favorite.findById(req.body.favorite).then(function(favorite){
