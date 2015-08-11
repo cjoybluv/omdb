@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var favorite = sequelize.define('favorite', {
     imdbid: DataTypes.STRING,
     title: DataTypes.STRING,
-    year: DataTypes.INTEGER,
+    year: DataTypes.STRING,
     poster: DataTypes.STRING
   }, {
     classMethods: {
