@@ -21,6 +21,15 @@
  -->
 
 
+//  tag/:id/show w/ fav detail
+      <form method="POST" action="/tags">
+        <input id="favorites" name="favorites" value="<%= JSON.stringify(tag[0].favorites); %>" type="hidden">
+        <button class="link-button" type="submit"><%= tag[0].tag %></button>
+      </form>
+
+
+
+
 
     <li><a href="<%= prevPage %>">Last Search</a></li>
     <li class="active"><%= movie.Title %></li>

@@ -50,11 +50,15 @@ router.get('/', function(req, res){
   });
 });
 
-router.post('/', function(req, res) {
-  res.send(req.body.favorites);
-  // res.render('favorites/index', {
-  //   favorites: req.body.favorites
-  // });
+router.get('/:id', function(req, res) {
+  // res.send(req.params.id);
+  db.tag.findById(parseInt(req.params.id)).then(function(tag){
+    tag.getFavorites().then(function(favorites){
+      res.render('favorites/index',{
+        favorites: favorites
+      });
+    });
+   });
 });
 
 module.exports = router;

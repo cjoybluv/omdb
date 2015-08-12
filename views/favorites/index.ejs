@@ -10,8 +10,9 @@
         <% } %>
         <% var favorite = favorites[i]; %>
         <td class="centered">
-          <a href="/movies/<%= favorite.imdbid %>"><img src="<%= favorite.poster %>" class="thumb img-responsive"></a>
-          <a href="/favorites/<%= favorite.id %>/comments" class="commentBtn"><%= favorite.comments.length %></a>
+          <a href="/movies/<%= favorite.imdbid %>"><img src="<%= favorite.poster %>" class="thumb"></a>
+          <a href="/favorites/<%= favorite.id %>/comments" class="commentBtn"><%# favorite.comments.length %></a>
+          <!--               COMMENT.LENGTH commented out for testing linkthur w filtered list ^^^^^^^^^^^^ -->
           <figcaption><%= favorite.title %> &mdash; <%= favorite.year %>
           </figcaption>
           <div class="col-md-12">
@@ -21,7 +22,14 @@
             <a href="/favorites/<%= favorite.id %>/tags/new" class="tagBtn"></a>
           </div>
           </td>
+          <% if (i===(favorites.length-1) && favorites.length<3) { %>
+            <td class="centered tbl-fill">&nbsp;</td>
+            <% if (favorites.length===1) { %>
+              <td class="centered tbl-fill">&nbsp;</td>
+            <% } %>
+          <% } %>
       <% } %>
+
     </tr>
   </tbody>
 </table>

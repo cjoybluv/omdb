@@ -15,6 +15,9 @@ a:hover {
 td,tr {
   border-top: none !important;
 }
+.tbl-fill {
+  width: 360px;
+}
 .centered {
   vertical-align:middle;
   text-align:center;
@@ -129,4 +132,6 @@ td,tr {
 .link-button {
   color: black;
 }
-
+.tag-cloud {
+  font-size: 1.0em;
+}
