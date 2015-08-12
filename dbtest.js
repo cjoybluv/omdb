@@ -40,19 +40,19 @@ var db = require('./models');
 
 
 //find 1 fav - get comments
-db.favorite.find(
-  {where:{imdbid:'tt0903624'} })
-.then(function(favorite){
-  favorite.getComments().then(function(comments){
-       console.log('comment count',comments.length);
-       comments.forEach(function(comment){
-      console.log('------');
-      console.log(comment.get());
+// db.favorite.find(
+//   {where:{imdbid:'tt0903624'} })
+// .then(function(favorite){
+//   favorite.getComments().then(function(comments){
+//        console.log('comment count',comments.length);
+//        comments.forEach(function(comment){
+//       console.log('------');
+//       console.log(comment.get());
 
-  });
-  console.log(favorite);
-  });
-});
+//   });
+//   console.log(favorite);
+//   });
+// });
 
 
 // //find 1 author - get comments
@@ -102,4 +102,20 @@ db.favorite.find(
 //   console.log('all done??');
 // });
 
+// // create a tag
+// db.tag.create({tag:'theGreatist'}).then(function(data){
+//   console.log(data.get());
+// });
 
+// findOrCreate tag; add to favorite
+db.favorite.find({
+  where: {id: 5} }).then(function(favorite) {
+  db.tag.findOrCreate( {
+      where: {tag: "fantasy"}})
+  .spread(function(tag, created) {
+    favorite.addTag(tag).then(function() {
+      console.log("a favorite title "+favorite.title+" mow has a tag of "+tag.tag);
+    });
+    // console.log(tag.get());
+  });
+});

@@ -11,13 +11,19 @@
         <% var favorite = favorites[i]; %>
         <td class="centered">
           <a href="/movies/<%= favorite.imdbid %>"><img src="<%= favorite.poster %>" class="thumb img-responsive"></a>
-          <a href="/favorites/<%= favorite.id %>/comments" class="star favBtn"></a>
-          <figcaption><%= favorite.title %> &mdash; <%= favorite.year %></figcaption>
-        </td>
+          <a href="/favorites/<%= favorite.id %>/comments" class="commentBtn"><%= favorite.comments.length %></a>
+          <figcaption><%= favorite.title %> &mdash; <%= favorite.year %>
+          </figcaption>
+          <div class="col-md-12">
+            <form action="/favorites/<%= favorite.id %>?_method=delete" method="POST" role="form">
+              <button type="submit" class="unFavBtn"></button>
+            </form>
+            <a href="/favorites/<%= favorite.id %>/tags/new" class="tagBtn"></a>
+          </div>
+          </td>
       <% } %>
     </tr>
   </tbody>
 </table>
-
 
 

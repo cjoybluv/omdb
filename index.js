@@ -1,12 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 
 var app = express();
 
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(methodOverride('_method'));
 
 var ejsLayouts = require('express-ejs-layouts');
 var request = require('request');

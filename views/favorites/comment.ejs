@@ -18,7 +18,7 @@
     <form action="/favorites/<%= favorite.id %>/comments" method="POST" role="form">
       <div class="form-group">
         <label for="comment">Add a Comment</label>
-        <input type="text" name="comment" class="form-control" placeholder="Enter Comment">
+        <textarea  type="text" name="comment" class="form-control" placeholder="Enter Comment" autofocus></textarea>
         <input type="hidden" name="favorite" value="<%= favorite.id %>">
       </div>
 

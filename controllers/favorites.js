@@ -19,17 +19,51 @@ router.post('/', function(req, res) {
 //   GET /favorites - list
 router.get('/', function(req, res){
   // res.send('posts home page!!');
-  db.favorite.findAll().then(function(favorites){
+  db.favorite.findAll({
+    include:[db.comment]
+  }).then(function(favorites){
       res.render('favorites/index',{
         favorites:favorites
       });
   });
 });
 
+
+router.delete('/:id',function(req,res){
+  // res.send('delete this fave');
+  db.favorite.destroy({where:{id:req.params.id}})
+  .then(function (){
+    res.redirect('/favorites');
+  });
+});
+
+
+// enter new? tag on favorite
+router.get('/:id/tags/new', function(req, res) {
+  res.render('tags/new', {favoriteId: req.params.id});
+});
+
+// create new tag (if needed), tag favorite!
+router.post('/:id/tags', function(req, res) {
+  // res.send("The tag name: " + req.body.tagName + "<br>The post id: " + req.params.id);
+  var newTag = req.body.tag;
+  var favoriteId = req.params.id;
+
+  db.favorite.findById(favoriteId).then(function(favorite) {
+    db.tag.findOrCreate({where: {tag: newTag}}).spread(function(tag, created) {
+      favorite.addTag(tag).then(function() {
+        res.redirect('/favorites');
+      })
+    });
+  });
+});
+
+
+
 router.get('/:id/comments', function(req,res) {
   db.favorite.findById(parseInt(req.params.id)).then(function(favorite){
     favorite.getComments().then(function(comments){
-      console.log('comments',comments);
+      // console.log('comments',comments);
       res.render('favorites/comment', {
         favorite: favorite,
         comments: comments
@@ -43,11 +77,10 @@ router.post('/:id/comments', function(req,res) {
     favorite.createComment({
       comment: req.body.comment
     }).then(function(comment){
-      res.redirect('/favorites');
+      res.redirect('/favorites/'+req.params.id+'/comments');
     });
   });
 });
-
 
 
 module.exports = router;
