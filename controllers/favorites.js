@@ -40,7 +40,14 @@ router.delete('/:id',function(req,res){
 
 // enter new? tag on favorite
 router.get('/:id/tags/new', function(req, res) {
-  res.render('tags/new', {favoriteId: req.params.id});
+  db.favorite.findById(parseInt(req.params.id)).then(function(favorite) {
+    favorite.getTags().then(function(tags) {
+      res.render('tags/new', {
+        favorite: favorite,
+        tags: tags
+      });
+    });
+  });
 });
 
 // create new tag (if needed), tag favorite!
