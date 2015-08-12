@@ -1,4 +1,10 @@
-<h3>Favorites List</h3>
+<h3>Favorites List <small>for
+  <% if(typeof tag === 'string') { %>
+   &nbsp;Tag: <%= tag %>
+  <% } else { %>
+    : All
+  <% }%>
+</small></h3>
 
 
 <table class="table">

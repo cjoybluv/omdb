@@ -117,7 +117,10 @@ td,tr {
   top: -338px;
   left: 50px;
 }
-
+h3 > small {
+  font-size: 1.0em;
+  color: #57F319;
+}
 .favorite {
   height: 300px;
   width: 300px;

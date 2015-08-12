@@ -57,6 +57,7 @@ router.get('/:id', function(req, res) {
           include:[db.comment]
         }).then(function(favorites){
       res.render('favorites/index',{
+        tag: tag.tag,
         favorites: favorites
       });
     });
