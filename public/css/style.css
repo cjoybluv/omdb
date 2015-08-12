@@ -125,5 +125,8 @@ td,tr {
   height: 300px;
   display: inline;
   padding: 20px;
-
 }
+.link-button {
+  color: black;
+}
+

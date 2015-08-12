@@ -19,13 +19,19 @@ router.post('/', function(req, res) {
 //   GET /favorites - list
 router.get('/', function(req, res){
   // res.send('posts home page!!');
-  db.favorite.findAll({
-    include:[db.comment]
-  }).then(function(favorites){
-      res.render('favorites/index',{
-        favorites:favorites
-      });
-  });
+  if (req.params.favorites) {
+    res.render('favorites/index', {
+      favorites: req.params.favorites
+    });
+  } else {
+    db.favorite.findAll({
+      include:[db.comment]
+    }).then(function(favorites){
+        res.render('favorites/index',{
+          favorites:favorites
+        });
+    });
+  }
 });
 
 

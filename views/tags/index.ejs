@@ -2,7 +2,13 @@
 
 <% tags.forEach(function(tag) { %>
   <div class="well">
-    <h4><%= tag[0].tag %><span class="pull-right"><%= tag[1] %></span></h4>
+    <h4>
+      <form method="POST" action="/tags">
+        <input id="favorites" name="favorites" value="<%= tag[0].favorites %>" type="hidden">
+        <button class="link-button" type="submit"><%= tag[0].tag %></button>
+      </form>
+      <span class="pull-right"><%= tag[1] %></span>
+    </h4>
     <p>
       <ul>
       <% tag[0].favorites.forEach(function(favorite) { %>

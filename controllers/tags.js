@@ -50,5 +50,12 @@ router.get('/', function(req, res){
   });
 });
 
+router.post('/', function(req, res) {
+  res.send(req.body.favorites);
+  // res.render('favorites/index', {
+  //   favorites: req.body.favorites
+  // });
+});
+
 module.exports = router;
 
