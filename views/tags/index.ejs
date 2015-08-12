@@ -3,7 +3,8 @@
 <% tags.forEach(function(tag) { %>
   <div class="well">
     <h4>
-      <a href="/tags/<%= tag[0].id %>"><span class="tag-cloud"><%= tag[0].tag %></span></a><span class="pull-right"><%= tag[1] %></span>
+      <% var tagEm = 1+(tag[1]/2) %>
+      <a href="/tags/<%= tag[0].id %>"><span class="tag-cloud" style="font-size:<%= tagEm %>em;"><%= tag[0].tag %></span></a><span class="pull-right"><%= tag[1] %></span>
     </h4>
     <p>
       <ul>

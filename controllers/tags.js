@@ -53,7 +53,9 @@ router.get('/', function(req, res){
 router.get('/:id', function(req, res) {
   // res.send(req.params.id);
   db.tag.findById(parseInt(req.params.id)).then(function(tag){
-    tag.getFavorites().then(function(favorites){
+    tag.getFavorites({
+          include:[db.comment]
+        }).then(function(favorites){
       res.render('favorites/index',{
         favorites: favorites
       });
