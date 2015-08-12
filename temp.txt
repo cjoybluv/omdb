@@ -11,6 +11,15 @@
 
 
 
+// sortTags
+<!--
+<% tags.forEach(function(tag) { %>
+  <div class="well">
+    <%= tag.tag %><span class="pull-right"><%= tag.favorites.length %></span>
+  </div>
+<% }); %>
+ -->
+
 
 
     <li><a href="<%= prevPage %>">Last Search</a></li>

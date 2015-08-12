@@ -1,0 +1,15 @@
+<h3>Tag List</h3>
+
+<% tags.forEach(function(tag) { %>
+  <div class="well">
+    <h4><%= tag[0].tag %><span class="pull-right"><%= tag[1] %></span></h4>
+    <p>
+      <ul>
+      <% tag[0].favorites.forEach(function(favorite) { %>
+        <li><%= favorite.title %><br/></li>
+      <% }) %>
+      </ul>
+    </p>
+  </div>
+<% }); %>
+
