@@ -35,7 +35,8 @@ router.get("/", function(req, res) {
 // /movies?q=star+wars
          res.render('movies/index', {
             movies: parsedData.Search,
-            q: q
+            q: q,
+            session: req.session
          });
       } else {
         console.log('no results!');

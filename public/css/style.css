@@ -61,11 +61,16 @@ td,tr {
   padding-right: 10px;
 }
 .commentBtn {
+/*
   background-image: url(/images/titlePageSprite-1214724556._V_.png);
   background-position: -157px -294px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+*/
+  background-image: url(/images/pokemon-soul-silver-sprite-sheet-the-pok--community-forums---view-single-post---the-ds-style-64x64-image.png);
+  background-position: -81px -164px;
+
+  width: 82px;
+  height: 82px;
+  line-height: 82px;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -80,11 +85,17 @@ td,tr {
   left: 250px;
 }
 .unFavBtn {
+/*
   background-image: url(/images/titlePageSprite-1214724556._V_.png);
   background-position: -231px -37px;
-  width: 19px;
-  height: 19px;
-  line-height: 19px;
+*/
+  background-image: url(/images/pokemon-soul-silver-sprite-sheet-the-pok--community-forums---view-single-post---the-ds-style-64x64-image.png);
+  background-position: -650px -564px;
+
+
+  width: 84px;
+  height: 84px;
+  line-height: 84px;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -95,15 +106,15 @@ td,tr {
   float: left;
   padding-right: 10px;
   position: relative;
-  top: -70px;
+  top: -125px;
   left: 250px;
 }
 .tagBtn {
-  background-image: url(/images/titlePageSprite-1214724556._V_.png);
-  background-position: -200px -219px;
-  width: 38px;
-  height: 38px;
-  line-height: 38px;
+  background-image: url(/images/pokemon-soul-silver-sprite-sheet-the-pok--community-forums---view-single-post---the-ds-style-64x64-image.png);
+  background-position: -5px -1212px;
+  width: 78px;
+  height: 78px;
+  line-height: 78px;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -114,8 +125,8 @@ td,tr {
   float: left;
   padding-right: 10px;
   position: relative;
-  top: -338px;
-  left: 50px;
+  top: -380px;
+  left: -60px;
 }
 h3 > small {
   font-size: 1.0em;
